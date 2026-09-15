@@ -1,0 +1,686 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Parisienne&display=swap');
+
+:root {
+  --paper: #f5f0e8;
+  --paper-dark: #e8dfd1;
+  --ink: #201d1a;
+  --muted: #756d63;
+  --line: rgba(32, 29, 26, 0.16);
+  --white: #fffdf9;
+  --dark: #151311;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Cormorant Garamond", serif;
+  line-height: 1.8;
+  overflow-x: hidden;
+}
+
+
+/* =========================
+   PAPER TEXTURE
+========================= */
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 999;
+  opacity: 0.12;
+
+  background-image:
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
+}
+
+
+/* =========================
+   GENERAL
+========================= */
+
+section {
+  position: relative;
+}
+
+.container {
+  width: min(1000px, 88%);
+  margin: auto;
+}
+
+.eyebrow {
+  font-family: "Inter", sans-serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.section-number {
+  display: block;
+  font-family: "Inter", sans-serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  color: var(--muted);
+  margin-bottom: 18px;
+}
+
+
+/* =========================
+   COVER
+========================= */
+
+.cover {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(255,255,255,0.7),
+      transparent 65%
+    ),
+    var(--paper);
+}
+
+.cover-inner {
+  width: min(720px, 94%);
+  text-align: center;
+}
+
+.cover-label {
+  font-family: "Inter", sans-serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 35px;
+}
+
+.envelope {
+  position: relative;
+  width: min(560px, 90vw);
+  height: 350px;
+  margin: auto;
+  background: #e2d5c3;
+  box-shadow:
+    0 30px 70px rgba(35, 27, 20, 0.18),
+    0 5px 15px rgba(35, 27, 20, 0.08);
+  overflow: hidden;
+}
+
+.envelope::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      135deg,
+      transparent 49.5%,
+      rgba(100, 82, 64, 0.18) 50%,
+      transparent 50.5%
+    );
+
+  opacity: 0.8;
+}
+
+.envelope-flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 55%;
+
+  background: #eee4d6;
+
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    50% 100%
+  );
+
+  z-index: 3;
+}
+
+.envelope-content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+  padding-top: 50px;
+}
+
+.envelope-content h1 {
+  font-size: clamp(4rem, 10vw, 7rem);
+  font-weight: 400;
+  font-family: "Parisienne", cursive;
+  line-height: 1;
+  margin-bottom: 20px;
+}
+
+.envelope-content p {
+  font-size: 1rem;
+  color: var(--muted);
+}
+
+.open-letter {
+  margin-top: 35px;
+  padding: 13px 30px;
+  border: 1px solid var(--ink);
+  background: transparent;
+  color: var(--ink);
+  font-family: "Inter", sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.open-letter:hover {
+  background: var(--ink);
+  color: var(--paper);
+  transform: translateY(-2px);
+}
+
+
+/* =========================
+   STORY SECTIONS
+========================= */
+
+.intro,
+.story-section,
+.memories,
+.unsaid,
+.songs,
+.questions,
+.more-words,
+.shayri-section {
+  width: min(850px, 88%);
+  margin: auto;
+  padding: 120px 0;
+}
+
+.intro {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.intro h2,
+.story-section h2,
+.memories h2,
+.unsaid h2,
+.songs h2,
+.questions h2,
+.more-words h2,
+.shayri-section h2 {
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  font-weight: 500;
+  line-height: 1;
+  margin-bottom: 50px;
+}
+
+.story-text {
+  font-size: clamp(1.2rem, 2vw, 1.45rem);
+  color: #37312b;
+}
+
+.story-text p {
+  margin-bottom: 28px;
+}
+
+
+/* =========================
+   DIVIDERS
+========================= */
+
+.divider {
+  width: 55px;
+  height: 1px;
+  background: var(--ink);
+  opacity: 0.4;
+  margin: 55px 0;
+}
+
+
+/* =========================
+   MEMORY CARDS
+========================= */
+
+.memory-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+  margin-top: 50px;
+}
+
+.memory-card {
+  padding: 35px;
+  background: rgba(255, 253, 249, 0.55);
+  border: 1px solid var(--line);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.memory-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(32, 29, 26, 0.08);
+}
+
+.memory-card p {
+  font-size: 1.25rem;
+}
+
+
+/* =========================
+   UNSAID SECTION
+========================= */
+
+.unsaid {
+  border-top: 1px solid var(--line);
+}
+
+.unsaid .story-text {
+  font-size: 1.35rem;
+}
+
+.unsaid strong {
+  font-weight: 600;
+}
+
+
+/* =========================
+   SONGS
+========================= */
+
+.song-list {
+  margin-top: 45px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.song {
+  border: 1px solid var(--line);
+  padding: 9px 17px;
+  font-family: "Inter", sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  background: rgba(255,255,255,0.25);
+}
+
+
+/* =========================
+   QUESTIONS
+========================= */
+
+.question-list {
+  margin-top: 45px;
+}
+
+.question {
+  padding: 28px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: clamp(1.4rem, 3vw, 2rem);
+}
+
+
+/* =========================
+   SHAYRI
+========================= */
+
+.shayri-section {
+  padding-bottom: 160px;
+}
+
+.shayri-card {
+  margin-top: 35px;
+  padding: 45px 40px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.shayri-number {
+  font-family: "Inter", sans-serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  color: var(--muted);
+  display: block;
+  margin-bottom: 25px;
+}
+
+.shayri-card p {
+  font-size: clamp(1.35rem, 2.5vw, 1.75rem);
+  line-height: 1.8;
+  white-space: pre-line;
+}
+
+
+/* =========================
+   9TH SHAYRI — HIGHLIGHT
+========================= */
+
+.featured-shayri {
+  position: relative;
+  margin-top: 90px;
+  padding: 75px 55px;
+
+  background: var(--dark);
+  color: #f4eee5;
+
+  box-shadow:
+    0 35px 80px rgba(20, 17, 14, 0.25);
+}
+
+.featured-shayri::before {
+  content: "09";
+  position: absolute;
+  top: 25px;
+  right: 30px;
+
+  font-family: "Inter", sans-serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  opacity: 0.45;
+}
+
+.featured-shayri::after {
+  content: "✦";
+  position: absolute;
+  top: 25px;
+  left: 30px;
+  font-size: 0.8rem;
+  opacity: 0.5;
+}
+
+.featured-shayri p {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  line-height: 1.85;
+  white-space: pre-line;
+}
+
+
+/* =========================
+   FINAL LETTER
+========================= */
+
+.final-letter {
+  background: var(--dark);
+  color: #f3ece2;
+  padding: 150px 0;
+}
+
+.final-inner {
+  width: min(850px, 88%);
+  margin: auto;
+}
+
+.final-letter .section-number,
+.final-letter .eyebrow {
+  color: rgba(243, 236, 226, 0.5);
+}
+
+.final-letter h2 {
+  font-size: clamp(3.5rem, 8vw, 7rem);
+  font-weight: 400;
+  line-height: 1;
+  margin: 25px 0 65px;
+}
+
+.letter-text {
+  font-size: clamp(1.25rem, 2.2vw, 1.5rem);
+  line-height: 1.9;
+}
+
+.letter-text p {
+  margin-bottom: 35px;
+}
+
+.last-message {
+  margin-top: 65px;
+  padding-top: 45px;
+  border-top: 1px solid rgba(243, 236, 226, 0.2);
+}
+
+
+/* =========================
+   FINAL QUESTIONS
+========================= */
+
+.final-questions {
+  margin-top: 100px;
+  padding-top: 60px;
+  border-top: 1px solid rgba(243, 236, 226, 0.2);
+}
+
+.final-questions p {
+  font-size: clamp(1.7rem, 4vw, 3rem);
+  line-height: 1.4;
+  margin-bottom: 35px;
+}
+
+.final-questions p:last-child {
+  font-family: "Parisienne", cursive;
+  font-size: clamp(2.3rem, 5vw, 4rem);
+}
+
+
+/* =========================
+   ENDING
+========================= */
+
+.ending {
+  min-height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  background: var(--paper);
+}
+
+.ending-content {
+  padding: 50px 20px;
+}
+
+.ending-small {
+  font-family: "Inter", sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 35px;
+}
+
+.ending h2 {
+  font-family: "Parisienne", cursive;
+  font-size: clamp(4rem, 12vw, 8rem);
+  font-weight: 400;
+  line-height: 1;
+}
+
+.ending-line {
+  margin-top: 40px;
+  color: var(--muted);
+  font-size: 1.2rem;
+}
+
+
+/* =========================
+   SCROLL REVEAL
+========================= */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity 1s ease,
+    transform 1s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* =========================
+   TOP BUTTON
+========================= */
+
+.top-btn {
+  position: fixed;
+  right: 25px;
+  bottom: 25px;
+
+  width: 45px;
+  height: 45px;
+
+  border: 1px solid var(--ink);
+  background: rgba(245, 240, 232, 0.8);
+
+  font-size: 1.2rem;
+  cursor: pointer;
+
+  opacity: 0;
+  pointer-events: none;
+
+  transition: all 0.3s ease;
+  z-index: 100;
+}
+
+.top-btn:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
+
+  .cover {
+    padding: 25px 15px;
+  }
+
+  .envelope {
+    height: 270px;
+  }
+
+  .envelope-content {
+    padding-top: 35px;
+  }
+
+  .envelope-content h1 {
+    font-size: 4.5rem;
+  }
+
+  .intro,
+  .story-section,
+  .memories,
+  .unsaid,
+  .songs,
+  .questions,
+  .more-words,
+  .shayri-section {
+    padding: 85px 0;
+  }
+
+  .intro h2,
+  .story-section h2,
+  .memories h2,
+  .unsaid h2,
+  .songs h2,
+  .questions h2,
+  .more-words h2,
+  .shayri-section h2 {
+    margin-bottom: 35px;
+  }
+
+  .story-text {
+    font-size: 1.18rem;
+  }
+
+  .memory-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .memory-card {
+    padding: 27px;
+  }
+
+  .shayri-card {
+    padding: 35px 10px;
+  }
+
+  .featured-shayri {
+    margin-top: 55px;
+    padding: 60px 25px;
+  }
+
+  .final-letter {
+    padding: 100px 0;
+  }
+
+  .letter-text {
+    font-size: 1.18rem;
+  }
+
+  .final-questions {
+    margin-top: 70px;
+  }
+
+  .ending {
+    min-height: 65vh;
+  }
+
+  .top-btn {
+    right: 18px;
+    bottom: 18px;
+  }
+}
+
+
+/* =========================
+   VERY SMALL SCREENS
+========================= */
+
+@media (max-width: 380px) {
+
+  .envelope {
+    height: 235px;
+  }
+
+  .envelope-content h1 {
+    font-size: 3.8rem;
+  }
+
+  .open-letter {
+    margin-top: 25px;
+    padding: 11px 22px;
+  }
+
+  .featured-shayri {
+    padding: 55px 20px;
+  }
+  }
